@@ -23,8 +23,17 @@
       <Project>{4D35FEE5-9D6A-4F13-9F06-6B7A0CC2D9F3}</Project>
       <Name>GeoLocalCAD.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\GeoLocalCAD.CRS\GeoLocalCAD.CRS.csproj">
+      <Project>{B5A9D98A-1D13-4F7D-BA3C-8B2F18B1D3C4}</Project>
+      <Name>GeoLocalCAD.CRS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\GeoLocalCAD.Vector\GeoLocalCAD.Vector.csproj">
+      <Project>{0C1D8E40-5F31-4E62-97D1-28CF8B79A7D1}</Project>
+      <Name>GeoLocalCAD.Vector</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoSettingsStoreSmokeTest.cs" />
+    <Compile Include="GeoPhase3SmokeTest.cs" />
   </ItemGroup>
 </Project>

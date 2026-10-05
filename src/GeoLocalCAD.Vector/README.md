@@ -1,3 +1,3 @@
 # GeoLocalCAD.Vector
 
-Reserved module boundary for the planned GeoLocal CAD roadmap. No feature is claimed complete in v0.1.0; implementation starts only after Phase 1 is validated in Civil 3D 2020.
+Phase 3 vector module. GeoJSON FeatureCollection import/export supports Point, LineString, Polygon, attributes, Z values, explicit CRS metadata, and refusal of missing CRS transformations.

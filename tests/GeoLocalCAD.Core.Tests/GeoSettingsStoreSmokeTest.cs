@@ -20,6 +20,7 @@ namespace GeoLocalCAD.Core.Tests
             Assert(loaded.DrawingCrs == "EPSG:32638", "DrawingCrs did not persist.");
             Assert(loaded.DataDirectory == "local-data", "DataDirectory did not persist.");
             Console.WriteLine("GeoSettingsStore smoke test passed: " + store.SettingsPath);
+            GeoPhase3SmokeTest.Run();
             return 0;
         }
 

@@ -2,7 +2,7 @@
 
 **GeoLocal CAD** is an offline-first, modular GIS/Survey/CRS plugin foundation for AutoCAD Civil 3D 2020.
 
-## Current status — v0.2.0 / Phase 2
+## Current status — v0.3.0 / Phase 3
 
 Implemented and documented:
 
@@ -16,8 +16,11 @@ Implemented and documented:
 - GeoLocal Ribbon tab with Phase 2 sections.
 - WPF settings window through `GEOSETTINGS`.
 - Local XML settings persistence with explicit Offline mode and drawing CRS.
+- Explicit EPSG CRS identifiers and PROJ-backed coordinate transformation.
+- Offline GeoJSON import/export for Point, LineString, and Polygon features.
+- `GEOIMPORT` and `GEOEXPORT` commands with CRS validation.
 
-Not claimed complete: CRS, raster/vector import, georeferencing, DEM, Civil 3D objects, or offline tile rendering. Those begin in later phases only after Phase 2 is validated in Civil 3D 2020.
+Not claimed complete: Shapefile/GeoPackage, raster, georeferencing, DEM, Civil 3D surface integration, or offline tile rendering. Those begin in later phases only after Phase 3 is validated in Civil 3D 2020.
 
 ## Build on a licensed Civil 3D 2020 machine
 
@@ -33,7 +36,7 @@ The output is `src\\GeoLocalCAD.Plugin\\bin\\Release\\GeoLocalCAD.dll` plus `Geo
 
 See [README-INSTALL.md](README-INSTALL.md) for NETLOAD instructions and the exact validation checklist.
 
-Phase 2 validation steps are in [docs/phase-2.md](docs/phase-2.md).
+Phase 2 validation steps are in [docs/phase-2.md](docs/phase-2.md), and Phase 3 steps are in [docs/phase-3.md](docs/phase-3.md).
 
 ## License and third-party policy
 

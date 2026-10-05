@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0] - 2026-10-05
+
+### Added
+- Explicit EPSG CRS model and PROJ `cs2cs` transformation adapter.
+- GeoJSON FeatureCollection reader/writer for Point, LineString, and Polygon geometries.
+- `GEOIMPORT` and `GEOEXPORT` AutoCAD commands with explicit CRS prompts.
+- Phase 3 smoke tests for CRS parsing, UTM transformation, GeoJSON round-trip, attributes, and Z values.
+
+### Not included
+- Autodesk DLLs or a Windows PROJ runtime.
+- Shapefile, GeoPackage, raster, DEM, or Civil 3D surface integration.
+
 ## [0.2.0] - 2026-10-05
 
 ### Added

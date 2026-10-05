@@ -1,4 +1,4 @@
-# GeoLocal CAD v0.2.0 — Installation and Phase 2 Validation
+# GeoLocal CAD v0.3.0 — Installation and Phase 3 Validation
 
 ## Requirements
 
@@ -14,9 +14,11 @@
 4. Browse to `GeoLocalCAD.dll` from the extracted release folder.
 5. Select **Load**. If a security warning appears, use a trusted local folder configured in Civil 3D's trusted locations; do not disable security globally.
 6. Enter `GEOLOCAL` and press Enter.
-7. Confirm the command reports `GeoLocal CAD v0.2.0 loaded successfully` and displays the log path.
+7. Confirm the command reports `GeoLocal CAD v0.3.0 loaded successfully` and displays the log path.
 8. Confirm the `GeoLocal` Ribbon tab appears.
 9. Enter `GEOSETTINGS`, change Offline mode or the explicit Drawing CRS, save, and reopen the command to verify persistence.
+10. Run `GEOIMPORT`, provide a GeoJSON path, source EPSG, and drawing EPSG.
+11. Run `GEOEXPORT`, select supported Point/Polyline entities, provide an output path and explicit drawing EPSG.
 
 ## Expected log
 
@@ -32,13 +34,16 @@ The plugin writes to `%LOCALAPPDATA%\\GeoLocalCAD\\Logs\\GeoLocalCAD.log` and re
 - [ ] The `GeoLocal` Ribbon tab appears with its Phase 2 sections.
 - [ ] `GEOSETTINGS` opens the WPF settings window.
 - [ ] Settings persist at `%LOCALAPPDATA%\\GeoLocalCAD\\settings.xml`.
+- [ ] `GEOIMPORT` creates entities from Point/LineString/Polygon GeoJSON.
+- [ ] `GEOEXPORT` writes a GeoJSON FeatureCollection with `geolocalCrs`.
+- [ ] `GEOLOCAL_PROJ_CS2CS` is configured for differing source/drawing CRS, or the operation stops visibly without transforming.
 
 ## Troubleshooting
 
 - **AutoCAD managed API not found during build:** set `AutodeskManagedApiPath` to the installed AutoCAD/Civil 3D 2020 folder.
 - **NETLOAD cannot load the DLL:** verify the DLL was built for .NET Framework 4.8 and that it is not blocked by Windows file security.
 - **GEOLOCAL is unknown:** unload/reload the exact `GeoLocalCAD.dll` from the release folder and inspect the log.
-- **Runtime exception:** collect the command-line text and the log file; do not claim Phase 2 passed until the evidence is reviewed.
+- **Runtime exception:** collect the command-line text and the log file; do not claim Phase 3 passed until the evidence is reviewed.
 
 ## Important limitation
 

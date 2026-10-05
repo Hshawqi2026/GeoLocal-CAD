@@ -1,0 +1,9 @@
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup><ProjectGuid>{B5A9D98A-1D13-4F7D-BA3C-8B2F18B1D3C4}</ProjectGuid><OutputType>Library</OutputType><RootNamespace>GeoLocalCAD.CRS</RootNamespace><AssemblyName>GeoLocalCAD.CRS</AssemblyName><TargetFrameworkVersion>v4.8</TargetFrameworkVersion><LangVersion>latest</LangVersion></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'"><OutputPath>bin\Release\</OutputPath><Optimize>true</Optimize></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'"><OutputPath>bin\Debug\</OutputPath><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType></PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup><Reference Include="System" /><Reference Include="System.Core" /></ItemGroup>
+  <ItemGroup><ProjectReference Include="..\GeoLocalCAD.Core\GeoLocalCAD.Core.csproj"><Project>{4D35FEE5-9D6A-4F13-9F06-6B7A0CC2D9F3}</Project><Name>GeoLocalCAD.Core</Name></ProjectReference></ItemGroup>
+  <ItemGroup><Compile Include="CrsIdentifier.cs" /><Compile Include="Coordinate.cs" /><Compile Include="ProjCliTransformer.cs" /></ItemGroup>
+</Project>
