@@ -2,7 +2,7 @@
 
 **GeoLocal CAD** is an offline-first, modular GIS/Survey/CRS plugin foundation for AutoCAD Civil 3D 2020.
 
-## Current status — v0.1.0 / Phase 0–1
+## Current status — v0.2.0 / Phase 2
 
 Implemented and documented:
 
@@ -13,8 +13,11 @@ Implemented and documented:
 - Real `GEOLOCAL` command registered with `CommandMethod`.
 - Build-time validation that AutoCAD 2020 managed API DLLs exist locally.
 - No Autodesk DLLs included in source or release packages.
+- GeoLocal Ribbon tab with Phase 2 sections.
+- WPF settings window through `GEOSETTINGS`.
+- Local XML settings persistence with explicit Offline mode and drawing CRS.
 
-Not claimed complete: CRS, raster/vector import, georeferencing, DEM, Civil 3D objects, ribbon/UI, or offline tile rendering. Those begin in later phases only after Phase 1 is validated in Civil 3D 2020.
+Not claimed complete: CRS, raster/vector import, georeferencing, DEM, Civil 3D objects, or offline tile rendering. Those begin in later phases only after Phase 2 is validated in Civil 3D 2020.
 
 ## Build on a licensed Civil 3D 2020 machine
 
@@ -24,11 +27,13 @@ From a Developer Command Prompt or MSBuild-capable shell:
 msbuild GeoLocalCAD.sln /p:Configuration=Release /p:AutodeskManagedApiPath="C:\Program Files\Autodesk\AutoCAD 2020"
 ```
 
-The output is `src\\GeoLocalCAD.Plugin\\bin\\Release\\GeoLocalCAD.dll` plus `GeoLocalCAD.Core.dll`.
+The output is `src\\GeoLocalCAD.Plugin\\bin\\Release\\GeoLocalCAD.dll` plus `GeoLocalCAD.Core.dll` and `GeoLocalCAD.UI.dll`.
 
 ## Install and test
 
 See [README-INSTALL.md](README-INSTALL.md) for NETLOAD instructions and the exact validation checklist.
+
+Phase 2 validation steps are in [docs/phase-2.md](docs/phase-2.md).
 
 ## License and third-party policy
 

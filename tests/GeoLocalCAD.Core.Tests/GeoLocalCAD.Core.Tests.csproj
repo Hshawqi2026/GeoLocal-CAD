@@ -1,0 +1,30 @@
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{9CF7F1D3-8F0F-4E3A-98DA-7DDFEF8D3A52}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GeoLocalCAD.Core.Tests</RootNamespace>
+    <AssemblyName>GeoLocalCAD.Core.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\GeoLocalCAD.Core\GeoLocalCAD.Core.csproj">
+      <Project>{4D35FEE5-9D6A-4F13-9F06-6B7A0CC2D9F3}</Project>
+      <Name>GeoLocalCAD.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GeoSettingsStoreSmokeTest.cs" />
+  </ItemGroup>
+</Project>

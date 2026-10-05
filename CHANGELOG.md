@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0] - 2026-10-05
+
+### Added
+- GeoLocal Ribbon tab with Phase 2 sections.
+- WPF settings window and `GEOSETTINGS` command.
+- Local XML settings persistence with explicit drawing CRS and Offline mode.
+- Autodesk `AdWindows.dll` build-time reference without redistribution.
+
 ## [0.1.0] - 2026-10-05
 
 ### Added

@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLocalCAD.Core", "src\Geo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLocalCAD.Plugin", "src\GeoLocalCAD.Plugin\GeoLocalCAD.Plugin.csproj", "{D4C22F75-4C20-44F7-AA2A-7E5E3EC95D8C}"
 EndProject
+Project("{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548}") = "GeoLocalCAD.UI", "src\GeoLocalCAD.UI\GeoLocalCAD.UI.csproj", "{7E4C6A7A-4B1C-41DD-9F45-852C3F7EAA52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLocalCAD.Core.Tests", "tests\GeoLocalCAD.Core.Tests\GeoLocalCAD.Core.Tests.csproj", "{9CF7F1D3-8F0F-4E3A-98DA-7DDFEF8D3A52}"
+EndProject
 Global
 GlobalSection(SolutionConfigurationPlatforms) = preSolution
 Debug|Any CPU = Debug|Any CPU
@@ -20,5 +24,13 @@ GlobalSection(ProjectConfigurationPlatforms) = postSolution
 {D4C22F75-4C20-44F7-AA2A-7E5E3EC95D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 {D4C22F75-4C20-44F7-AA2A-7E5E3EC95D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 {D4C22F75-4C20-44F7-AA2A-7E5E3EC95D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+{7E4C6A7A-4B1C-41DD-9F45-852C3F7EAA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+{7E4C6A7A-4B1C-41DD-9F45-852C3F7EAA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+{7E4C6A7A-4B1C-41DD-9F45-852C3F7EAA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+{7E4C6A7A-4B1C-41DD-9F45-852C3F7EAA52}.Release|Any CPU.Build.0 = Release|Any CPU
+{9CF7F1D3-8F0F-4E3A-98DA-7DDFEF8D3A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+{9CF7F1D3-8F0F-4E3A-98DA-7DDFEF8D3A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+{9CF7F1D3-8F0F-4E3A-98DA-7DDFEF8D3A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+{9CF7F1D3-8F0F-4E3A-98DA-7DDFEF8D3A52}.Release|Any CPU.Build.0 = Release|Any CPU
 EndGlobalSection
 EndGlobal

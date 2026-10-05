@@ -9,9 +9,10 @@ if ! command -v msbuild >/dev/null 2>&1; then
   exit 2
 fi
 msbuild GeoLocalCAD.sln /t:Rebuild /p:Configuration=Release /p:AutodeskManagedApiPath="$AUTODESK_MANAGED_API_PATH"
-mkdir -p artifacts/GeoLocalCAD_v0.1.0
-cp src/GeoLocalCAD.Plugin/bin/Release/GeoLocalCAD.dll artifacts/GeoLocalCAD_v0.1.0/
-cp src/GeoLocalCAD.Core/bin/Release/GeoLocalCAD.Core.dll artifacts/GeoLocalCAD_v0.1.0/
-cp README-INSTALL.md CHANGELOG.md LICENSE artifacts/GeoLocalCAD_v0.1.0/
-(cd artifacts && zip -r GeoLocalCAD_v0.1.0.zip GeoLocalCAD_v0.1.0 >/dev/null)
-echo "Release created: artifacts/GeoLocalCAD_v0.1.0.zip"
+mkdir -p artifacts/GeoLocalCAD_v0.2.0
+cp src/GeoLocalCAD.Plugin/bin/Release/GeoLocalCAD.dll artifacts/GeoLocalCAD_v0.2.0/
+cp src/GeoLocalCAD.Core/bin/Release/GeoLocalCAD.Core.dll artifacts/GeoLocalCAD_v0.2.0/
+cp src/GeoLocalCAD.UI/bin/Release/GeoLocalCAD.UI.dll artifacts/GeoLocalCAD_v0.2.0/
+cp README-INSTALL.md CHANGELOG.md LICENSE artifacts/GeoLocalCAD_v0.2.0/
+(cd artifacts && zip -r GeoLocalCAD_v0.2.0.zip GeoLocalCAD_v0.2.0 >/dev/null)
+echo "Release created: artifacts/GeoLocalCAD_v0.2.0.zip"

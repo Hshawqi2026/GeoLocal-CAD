@@ -39,14 +39,30 @@
       <HintPath>$(AutodeskManagedApiPath)\AcMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="AdWindows">
+      <HintPath>$(AutodeskManagedApiPath)\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoLocalCAD.UI\GeoLocalCAD.UI.csproj">
+      <Project>{7E4C6A7A-4B1C-41DD-9F45-852C3F7EAA52}</Project>
+      <Name>GeoLocalCAD.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PluginEntryPoint.cs" />
     <Compile Include="Commands\GeoLocalCommand.cs" />
+    <Compile Include="Commands\GeoSettingsCommand.cs" />
+    <Compile Include="Ribbon\GeoLocalRibbon.cs" />
   </ItemGroup>
   <Target Name="ValidateAutodeskReferences" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcCoreMgd.dll')" Text="AutoCAD 2020 managed API not found. Set AutodeskManagedApiPath to the licensed AutoCAD/Civil 3D 2020 installation directory." />
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcDbMgd.dll')" Text="AutoCAD 2020 managed API not found: AcDbMgd.dll." />
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcMgd.dll')" Text="AutoCAD 2020 managed API not found: AcMgd.dll." />
+    <Error Condition="!Exists('$(AutodeskManagedApiPath)\AdWindows.dll')" Text="AutoCAD 2020 Ribbon API not found: AdWindows.dll." />
   </Target>
 </Project>

@@ -20,12 +20,14 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logging\IGeoLogger.cs" />
     <Compile Include="Logging\LogLevel.cs" />
     <Compile Include="Logging\FileGeoLogger.cs" />
     <Compile Include="PluginInfo.cs" />
+    <Compile Include="Settings\GeoSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

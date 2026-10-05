@@ -1,0 +1,41 @@
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{7E4C6A7A-4B1C-41DD-9F45-852C3F7EAA52}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GeoLocalCAD.UI</RootNamespace>
+    <AssemblyName>GeoLocalCAD.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Windows\Xaml\v$(VisualStudioVersion)\Microsoft.Xaml.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\Windows\Xaml\v$(VisualStudioVersion)\Microsoft.Xaml.targets')" />
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoLocalCAD.Core\GeoLocalCAD.Core.csproj">
+      <Project>{4D35FEE5-9D6A-4F13-9F06-6B7A0CC2D9F3}</Project>
+      <Name>GeoLocalCAD.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="GeoSettingsWindow.xaml" />
+    <Compile Include="GeoSettingsWindow.xaml.cs">
+      <DependentUpon>GeoSettingsWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
