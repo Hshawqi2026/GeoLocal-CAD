@@ -38,6 +38,8 @@ See [README-INSTALL.md](README-INSTALL.md) for NETLOAD instructions and the exac
 
 Phase 2 validation steps are in [docs/phase-2.md](docs/phase-2.md), and Phase 3 steps are in [docs/phase-3.md](docs/phase-3.md).
 
+The proposed Phase 4 plan is in [docs/phase-4-plan.md](docs/phase-4-plan.md). Windows build and Civil 3D validation steps are in [docs/windows-test-guide.md](docs/windows-test-guide.md).
+
 ## License and third-party policy
 
 The project is MIT-licensed. Autodesk assemblies are proprietary and must be supplied by the installed licensed product; they are not redistributed. Future PROJ/GDAL/GEOS/SQLite dependencies will be documented with their upstream licenses before inclusion.
