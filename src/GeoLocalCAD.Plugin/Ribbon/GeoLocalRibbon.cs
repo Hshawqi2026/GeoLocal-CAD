@@ -30,7 +30,7 @@ namespace GeoLocalCAD.Plugin.Ribbon
             AddPanel(tab, "Import/Export", new RibbonButton { Text = "Export GeoJSON", ShowText = true, CommandHandler = new AutoCadCommand("GEOEXPORT") });
             AddPanel(tab, "Georeference", new RibbonButton { Text = "Georeference", ShowText = true, CommandHandler = new AutoCadCommand("GEOLOCAL") });
             AddPanel(tab, "DEM", new RibbonButton { Text = "DEM Tools", ShowText = true, CommandHandler = new AutoCadCommand("GEOLOCAL") });
-            AddPanel(tab, "Survey", new RibbonButton { Text = "Coordinate Inspector", ShowText = true, CommandHandler = new AutoCadCommand("GEOLOCAL") });
+            AddPanel(tab, "Survey", new RibbonButton { Text = "Coordinate Inspector", ShowText = true, CommandHandler = new AutoCadCommand("GEOINFO") });
             AddPanel(tab, "Civil 3D", new RibbonButton { Text = "Civil 3D Tools", ShowText = true, CommandHandler = new AutoCadCommand("GEOLOCAL") });
             AddPanel(tab, "Tools", new RibbonButton { Text = "GEOLOCAL", ShowText = true, CommandHandler = new AutoCadCommand("GEOLOCAL") });
             AddPanel(tab, "Settings", new RibbonButton { Text = "GeoLocal Settings", ShowText = true, CommandHandler = new AutoCadCommand("GEOSETTINGS") });

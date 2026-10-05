@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using GeoLocalCAD.CRS;
+using GeoLocalCAD.Core.Inspection;
 using GeoLocalCAD.Vector;
 
 namespace GeoLocalCAD.Core.Tests
@@ -23,7 +24,10 @@ namespace GeoLocalCAD.Core.Tests
             var proj = new ProjCliTransformer("/usr/bin/cs2cs", null);
             var utm = proj.Transform(new Coordinate(44.2, 15.3), wgs84, CrsIdentifier.Parse("EPSG:32638"));
             if (Math.Abs(utm.X - 414112.6900) > 0.1 || Math.Abs(utm.Y - 1691665.9910) > 0.1) throw new InvalidOperationException("PROJ UTM transformation regression failed: " + utm);
-            Console.WriteLine("Phase 3 CRS/GeoJSON smoke test passed.");
+            var observation = new CoordinateObservation("DBPoint", 10, 20, 30);
+            var inspection = CoordinateInspectionResult.Create(observation, "EPSG:32638", "EPSG:4326", null, null, null, "Unavailable", "PROJ not configured");
+            if (inspection.FormatDrawingCoordinate().IndexOf("X=10", StringComparison.Ordinal) < 0 || inspection.HasGeographicCoordinate) throw new InvalidOperationException("Coordinate Inspector result formatting failed.");
+            Console.WriteLine("Phase 3/4 Core smoke tests passed.");
         }
     }
 }

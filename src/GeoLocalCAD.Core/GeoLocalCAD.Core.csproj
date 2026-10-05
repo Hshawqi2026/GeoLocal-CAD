@@ -28,6 +28,7 @@
     <Compile Include="Logging\FileGeoLogger.cs" />
     <Compile Include="PluginInfo.cs" />
     <Compile Include="Settings\GeoSettings.cs" />
+    <Compile Include="Inspection\CoordinateInspection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

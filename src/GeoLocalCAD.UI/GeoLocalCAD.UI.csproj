@@ -31,11 +31,19 @@
       <Project>{4D35FEE5-9D6A-4F13-9F06-6B7A0CC2D9F3}</Project>
       <Name>GeoLocalCAD.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeoLocalCAD.CRS\GeoLocalCAD.CRS.csproj">
+      <Project>{B5A9D98A-1D13-4F7D-BA3C-8B2F18B1D3C4}</Project>
+      <Name>GeoLocalCAD.CRS</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="GeoSettingsWindow.xaml" />
+    <Page Include="CoordinateInspectorWindow.xaml" />
     <Compile Include="GeoSettingsWindow.xaml.cs">
       <DependentUpon>GeoSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CoordinateInspectorWindow.xaml.cs">
+      <DependentUpon>CoordinateInspectorWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

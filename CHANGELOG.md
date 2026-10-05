@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0] - 2026-10-05
+
+### Added
+- Coordinate inspection Core contracts and validation.
+- `GEOINFO` command for DBPoint, Line, Polyline, and Circle representative coordinates.
+- WPF Coordinate Inspector with CRS status, geographic conversion status, warnings, and clipboard copy.
+- Phase 4 Civil 3D validation documentation.
+
 ## [0.3.0] - 2026-10-05
 
 ### Added

@@ -68,6 +68,7 @@
     <Compile Include="Ribbon\GeoLocalRibbon.cs" />
     <Compile Include="Commands\GeoImportCommand.cs" />
     <Compile Include="Commands\GeoExportCommand.cs" />
+    <Compile Include="Commands\GeoInfoCommand.cs" />
   </ItemGroup>
   <Target Name="ValidateAutodeskReferences" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcCoreMgd.dll')" Text="AutoCAD 2020 managed API not found. Set AutodeskManagedApiPath to the licensed AutoCAD/Civil 3D 2020 installation directory." />
