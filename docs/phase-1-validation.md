@@ -3,6 +3,7 @@
 ## Source validation
 
 - Solution contains `GeoLocalCAD.Core` and `GeoLocalCAD.Plugin`.
+- `GeoLocalCAD.Core` builds successfully with Mono/xbuild in the Linux authoring environment (warning: Mono 6.8 does not provide a v4.8 targeting pack).
 - Core has no Autodesk references.
 - Plugin references Autodesk APIs through an explicit local path property.
 - `GEOLOCAL` is implemented with `CommandMethod` and calls the active document editor.
