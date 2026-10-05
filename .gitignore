@@ -1,0 +1,20 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+artifacts/*
+!artifacts/.gitkeep
+*.user
+*.suo
+*.userprefs
+.vs/
+# Autodesk/local build configuration
+.local/
+Directory.Build.local.props
+# Logs and local data
+*.log
+logs/
+*.sqlite
+*.gpkg
+# OS
+.DS_Store
+Thumbs.db

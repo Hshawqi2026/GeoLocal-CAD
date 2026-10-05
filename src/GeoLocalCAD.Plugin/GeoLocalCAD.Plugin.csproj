@@ -1,0 +1,43 @@
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{D4C22F75-4C20-44F7-AA2A-7E5E3EC95D8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GeoLocalCAD.Plugin</RootNamespace>
+    <AssemblyName>GeoLocalCAD</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
+    <AutodeskManagedApiPath Condition="'$(AutodeskManagedApiPath)' == ''">$(ProgramFiles)\Autodesk\AutoCAD 2020</AutodeskManagedApiPath>
+    <Civil3DManagedApiPath Condition="'$(Civil3DManagedApiPath)' == ''">$(ProgramFiles)\Autodesk\AutoCAD 2020</Civil3DManagedApiPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\GeoLocalCAD.Core\GeoLocalCAD.Core.csproj">
+      <Project>{4D35FEE5-9D6A-4F13-9F06-6B7A0CC2D9F3}</Project>
+      <Name>GeoLocalCAD.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Autodesk DLLs are never redistributed. Set AutodeskManagedApiPath to the installed 2020 folder. -->
+    <Reference Include="AcCoreMgd">
+      <HintPath>$(AutodeskManagedApiPath)\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDbMgd">
+      <HintPath>$(AutodeskManagedApiPath)\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>$(AutodeskManagedApiPath)\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PluginEntryPoint.cs" />
+    <Compile Include="Commands\GeoLocalCommand.cs" />
+  </ItemGroup>
+  <Target Name="ValidateAutodeskReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcCoreMgd.dll')" Text="AutoCAD 2020 managed API not found. Set AutodeskManagedApiPath to the licensed AutoCAD/Civil 3D 2020 installation directory." />
+    <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcDbMgd.dll')" Text="AutoCAD 2020 managed API not found: AcDbMgd.dll." />
+    <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcMgd.dll')" Text="AutoCAD 2020 managed API not found: AcMgd.dll." />
+  </Target>
+</Project>

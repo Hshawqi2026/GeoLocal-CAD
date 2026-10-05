@@ -1,0 +1,35 @@
+# GeoLocal CAD
+
+**GeoLocal CAD** is an offline-first, modular GIS/Survey/CRS plugin foundation for AutoCAD Civil 3D 2020.
+
+## Current status — v0.1.0 / Phase 0–1
+
+Implemented and documented:
+
+- Modular solution boundaries.
+- `.NET Framework 4.8` project targeting.
+- Core logging independent of Autodesk APIs.
+- Autodesk adapter with `IExtensionApplication`.
+- Real `GEOLOCAL` command registered with `CommandMethod`.
+- Build-time validation that AutoCAD 2020 managed API DLLs exist locally.
+- No Autodesk DLLs included in source or release packages.
+
+Not claimed complete: CRS, raster/vector import, georeferencing, DEM, Civil 3D objects, ribbon/UI, or offline tile rendering. Those begin in later phases only after Phase 1 is validated in Civil 3D 2020.
+
+## Build on a licensed Civil 3D 2020 machine
+
+From a Developer Command Prompt or MSBuild-capable shell:
+
+```powershell
+msbuild GeoLocalCAD.sln /p:Configuration=Release /p:AutodeskManagedApiPath="C:\Program Files\Autodesk\AutoCAD 2020"
+```
+
+The output is `src\\GeoLocalCAD.Plugin\\bin\\Release\\GeoLocalCAD.dll` plus `GeoLocalCAD.Core.dll`.
+
+## Install and test
+
+See [README-INSTALL.md](README-INSTALL.md) for NETLOAD instructions and the exact validation checklist.
+
+## License and third-party policy
+
+The project is MIT-licensed. Autodesk assemblies are proprietary and must be supplied by the installed licensed product; they are not redistributed. Future PROJ/GDAL/GEOS/SQLite dependencies will be documented with their upstream licenses before inclusion.

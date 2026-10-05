@@ -1,0 +1,21 @@
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{4D35FEE5-9D6A-4F13-9F06-6B7A0CC2D9F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GeoLocalCAD.Core</RootNamespace>
+    <AssemblyName>GeoLocalCAD.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Logging\IGeoLogger.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\FileGeoLogger.cs" />
+    <Compile Include="PluginInfo.cs" />
+  </ItemGroup>
+</Project>
