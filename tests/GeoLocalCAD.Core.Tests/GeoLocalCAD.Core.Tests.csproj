@@ -31,9 +31,14 @@
       <Project>{0C1D8E40-5F31-4E62-97D1-28CF8B79A7D1}</Project>
       <Name>GeoLocalCAD.Vector</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\GeoLocalCAD.Raster\GeoLocalCAD.Raster.csproj">
+      <Project>{A1F3D0A1-6A19-4A72-9A0A-2AF8C4E3D5B7}</Project>
+      <Name>GeoLocalCAD.Raster</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoSettingsStoreSmokeTest.cs" />
     <Compile Include="GeoPhase3SmokeTest.cs" />
+    <Compile Include="GeoRasterSmokeTest.cs" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 **GeoLocal CAD** is an offline-first, modular GIS/Survey/CRS plugin foundation for AutoCAD Civil 3D 2020.
 
-## Current status — v0.4.0 / Phase 4
+## Current status — v0.5.0 / Phase 5
 
 Implemented and documented:
 
@@ -21,8 +21,10 @@ Implemented and documented:
 - `GEOIMPORT` and `GEOEXPORT` commands with CRS validation.
 - `GEOINFO` Coordinate Inspector for DBPoint, Line, Polyline, and Circle.
 - WPF coordinate inspection window with CRS status and clipboard copy.
+- Raster metadata engine for PNG, JPEG, BMP, TIFF/GeoTIFF, and World Files.
+- `GEOIMPORTRASTER` with geotransform validation and real RasterImage placement.
 
-Not claimed complete: Shapefile/GeoPackage, raster, georeferencing, DEM, Civil 3D surface integration, or offline tile rendering. Those begin in later phases only after Phase 4 is validated in Civil 3D 2020.
+Not claimed complete: Shapefile/GeoPackage, advanced pixel sampling/NoData through GDAL, georeferencing, DEM, Civil 3D surface integration, or offline tile rendering. Those begin in later phases only after Phase 5 is validated in Civil 3D 2020.
 
 ## Build on a licensed Civil 3D 2020 machine
 
@@ -38,7 +40,7 @@ The output is `src\\GeoLocalCAD.Plugin\\bin\\Release\\GeoLocalCAD.dll` plus `Geo
 
 See [README-INSTALL.md](README-INSTALL.md) for NETLOAD instructions and the exact validation checklist.
 
-Phase 2 validation steps are in [docs/phase-2.md](docs/phase-2.md), Phase 3 steps are in [docs/phase-3.md](docs/phase-3.md), and Phase 4 implementation/validation is in [docs/phase-4.md](docs/phase-4.md).
+Phase 2 validation steps are in [docs/phase-2.md](docs/phase-2.md), Phase 3 steps are in [docs/phase-3.md](docs/phase-3.md), Phase 4 implementation/validation is in [docs/phase-4.md](docs/phase-4.md), and Phase 5 is in [docs/phase-5.md](docs/phase-5.md).
 
 The proposed Phase 4 plan is in [docs/phase-4-plan.md](docs/phase-4-plan.md). Windows build and Civil 3D validation steps are in [docs/windows-test-guide.md](docs/windows-test-guide.md).
 

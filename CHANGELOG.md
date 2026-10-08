@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.5.0] - 2026-10-08
+
+### Added
+- `GeoLocalCAD.Raster` metadata and geotransform engine.
+- PNG, JPEG, BMP, TIFF/GeoTIFF dimension and metadata reading.
+- PGW, JGW, TFW, WLD, and WORLD file support.
+- Pixel-to-world, world-to-pixel, rotated extent, and georeferencing validation.
+- `GEOIMPORTRASTER` AutoCAD RasterImage insertion command.
+- Phase 5 Raster smoke tests and Civil 3D acceptance checklist.
+
+### Limitations
+- Full pixel-band/NoData sampling through GDAL remains scheduled for Raster/DEM expansion.
+- Civil 3D runtime validation requires a licensed Windows Civil 3D 2020 environment.
+
 ## [0.4.0] - 2026-10-05
 
 ### Added

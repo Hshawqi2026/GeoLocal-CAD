@@ -1,4 +1,4 @@
-# GeoLocal CAD v0.4.0 — Installation and Phase 4 Validation
+# GeoLocal CAD v0.5.0 — Installation and Phase 5 Validation
 
 ## Requirements
 
@@ -14,12 +14,13 @@
 4. Browse to `GeoLocalCAD.dll` from the extracted release folder.
 5. Select **Load**. If a security warning appears, use a trusted local folder configured in Civil 3D's trusted locations; do not disable security globally.
 6. Enter `GEOLOCAL` and press Enter.
-7. Confirm the command reports `GeoLocal CAD v0.4.0 loaded successfully` and displays the log path.
+7. Confirm the command reports `GeoLocal CAD v0.5.0 loaded successfully` and displays the log path.
 8. Confirm the `GeoLocal` Ribbon tab appears.
 9. Enter `GEOSETTINGS`, change Offline mode or the explicit Drawing CRS, save, and reopen the command to verify persistence.
 10. Run `GEOIMPORT`, provide a GeoJSON path, source EPSG, and drawing EPSG.
 11. Run `GEOEXPORT`, select supported Point/Polyline entities, provide an output path and explicit drawing EPSG.
 12. Run `GEOINFO`, select a DBPoint/Line/Polyline/Circle, and verify the WPF coordinate inspector opens.
+13. Run `GEOIMPORTRASTER`, provide a georeferenced GeoTIFF or PNG/JPEG/BMP plus World File, and verify the image is placed at its real extent.
 
 ## Expected log
 
@@ -41,13 +42,15 @@ The plugin writes to `%LOCALAPPDATA%\\GeoLocalCAD\\Logs\\GeoLocalCAD.log` and re
 - [ ] `GEOINFO` displays X/Y/Z and the entity type without modifying the drawing.
 - [ ] `GEOINFO` displays geographic coordinates only when CRS and PROJ are valid.
 - [ ] `GEOINFO` Copy coordinates places the displayed values on the clipboard.
+- [ ] `GEOIMPORTRASTER` reads raster dimensions and extent and creates a RasterImage at the georeferenced location.
+- [ ] An unreferenced raster is rejected and is not placed at `(0,0)`.
 
 ## Troubleshooting
 
 - **AutoCAD managed API not found during build:** set `AutodeskManagedApiPath` to the installed AutoCAD/Civil 3D 2020 folder.
 - **NETLOAD cannot load the DLL:** verify the DLL was built for .NET Framework 4.8 and that it is not blocked by Windows file security.
 - **GEOLOCAL is unknown:** unload/reload the exact `GeoLocalCAD.dll` from the release folder and inspect the log.
-- **Runtime exception:** collect the command-line text and the log file; do not claim Phase 4 passed until the evidence is reviewed.
+- **Runtime exception:** collect the command-line text and the log file; do not claim Phase 5 passed until the evidence is reviewed.
 
 ## Important limitation
 

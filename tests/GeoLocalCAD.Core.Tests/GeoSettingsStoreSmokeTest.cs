@@ -21,6 +21,7 @@ namespace GeoLocalCAD.Core.Tests
             Assert(loaded.DataDirectory == "local-data", "DataDirectory did not persist.");
             Console.WriteLine("GeoSettingsStore smoke test passed: " + store.SettingsPath);
             GeoPhase3SmokeTest.Run();
+            GeoRasterSmokeTest.Run();
             return 0;
         }
 

@@ -60,6 +60,10 @@
       <Project>{0C1D8E40-5F31-4E62-97D1-28CF8B79A7D1}</Project>
       <Name>GeoLocalCAD.Vector</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeoLocalCAD.Raster\GeoLocalCAD.Raster.csproj">
+      <Project>{A1F3D0A1-6A19-4A72-9A0A-2AF8C4E3D5B7}</Project>
+      <Name>GeoLocalCAD.Raster</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PluginEntryPoint.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Commands\GeoImportCommand.cs" />
     <Compile Include="Commands\GeoExportCommand.cs" />
     <Compile Include="Commands\GeoInfoCommand.cs" />
+    <Compile Include="Commands\GeoImportRasterCommand.cs" />
   </ItemGroup>
   <Target Name="ValidateAutodeskReferences" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcCoreMgd.dll')" Text="AutoCAD 2020 managed API not found. Set AutodeskManagedApiPath to the licensed AutoCAD/Civil 3D 2020 installation directory." />
