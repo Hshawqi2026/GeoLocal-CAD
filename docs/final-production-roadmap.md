@@ -15,7 +15,7 @@
 | المرحلة | الإصدار المستهدف | المخرجات الأساسية | بوابة القبول |
 |---|---:|---|---|
 | Phase 5 | v0.5.0 | Raster/GeoTIFF/World Files وRaster layer | قراءة metadata وموضع حقيقي واختبار دون `(0,0)` افتراضي |
-| Phase 6 | v0.6.0 | Shapefile وGeoPackage وGeoJSON وDXF adapters | Geometry/Attributes/CRS وRound-trip |
+| Phase 6 | v0.6.0 | Vector adapters + Raster-to-DEM bridge + Civil 3D TIN Surface contract | Geometry/Attributes/CRS وRound-trip، DEM samples وSurface request |
 | Phase 7 | v0.7.0 | Similarity/Affine/Helmert وControl Points | RMSE وResiduals ورفض الحل السيئ |
 | Phase 8 | v0.8.0 | DEM وارتفاعات وContours ونقاط ارتفاع | NoData وارتفاعات مرتبطة بالموقع الحقيقي |
 | Phase 9 | v0.9.0 | COGO/TIN/Feature Lines/Alignments/Profiles | Civil 3D integration داخل نسخة 2020 |
@@ -31,13 +31,35 @@
 
 الأوامر: `GEOIMPORTRASTER` أو واجهة واضحة تحت Maps/Raster، مع فحص CRS وتحويله صراحة. الاختبارات تشمل World File rotation، Pixel-to-world، NoData، CRS mismatch، ورفض Raster غير georeferenced دون تأكيد صريح من المستخدم.
 
-## Phase 6 — Vector Engine
+## Phase 6 — Vector Engine وRaster-to-DEM Surface Bridge
 
 توسيع `GeoLocalCAD.Vector` إلى Shapefile وGeoPackage وDXF adapters مع حفظ Geometry وAttributes وCRS وLayers. كل adapter يملك reader/writer فعليًا، schema validation، encoding handling، وRound-trip tests. يظل GeoJSON مدعومًا للتوافق مع Phase 3.
 
 ينشأ Storage boundary لربط feature attributes بـ AutoCAD entities دون فقدان المصدر. يجب أن يكون لكل import تقرير بعدد العناصر المستوردة والمتخطاة وأسباب التخطي، مع Layer policy حتمية.
 
 الأوامر: `GEOIMPORT` و`GEOEXPORT` يتوسعان بصيغة يحددها المستخدم أو الامتداد، مع `GEOREPROJECT` لتحويل مجموعة بيانات كاملة بين CRS صريحين.
+
+### مسار Raster المستورد إلى DEM Surface
+
+يُضاف في Phase 6 مسار تكامل مبكر يربط Raster georeferenced الذي تم استيراده في Phase 5 بمحرك DEM مستقل، دون خلط أنواع Autodesk داخل Core:
+
+```text
+GeoTIFF/DEM Raster
+  -> RasterMetadata + GeoTransform
+  -> elevation grid / pixel sampler
+  -> NoData filtering and CRS validation
+  -> valid geolocated elevation samples
+  -> Civil3D Surface Adapter
+  -> TIN surface inside Civil 3D 2020
+```
+
+ينشأ `GeoLocalCAD.DEM` بعقود `DemGrid` و`DemSample` و`Civil3DSurfaceRequest` و`IDemSurfaceBuilder`. يحتفظ كل Grid بـ GeoTransform وCRS وNoData، ويحوّل مركز كل pixel إلى إحداثيات العالم الحقيقية قبل إرسال نقاط الارتفاع إلى Adapter Civil 3D. لا يسمح المسار بإنشاء Surface إذا كان CRS أو georeferencing مفقودًا، أو إذا كانت العينة NoData/غير رقمية.
+
+يكون `GeoLocalCAD.Civil3D` هو الطبقة الوحيدة التي تستدعي Civil 3D API لإنشاء `TinSurface` وإضافة نقاط الارتفاع والمعالجة داخل Transaction. يقوم الـ Adapter بإنشاء اسم Surface وLayer حتميين، ويعرض عدد العينات المقبولة والمرفوضة، ويترك الرسم دون تغيير عند الفشل. تنفيذ GEODEM وقراءة قيم البكسلات عبر GDAL و`GEOCONTOUR` المتقدم يبقى ضمن Phase 8، لكن عقود Surface bridge واختبارات NoData/CRS تبدأ هنا لمنع إعادة التصميم.
+
+### بوابة Phase 6 الخاصة بالـ DEM Surface
+
+لا تُعتبر هذه الإضافة مكتملة إلا بعد: إنشاء Grid من Raster فعلي، إثبات Pixel-to-world بمثال معروف، استبعاد NoData، رفض CRS المفقود أو المختلف دون تحويل صامت، بناء Core/DEM tests، ثم اختبار `TinSurface` فعليًا داخل Civil 3D 2020 مع إعادة فتح DWG والتحقق من عدد النقاط وموضعها ووحداتها. لا يُضاف أمر `GEODEM` إلى Ribbon كزر شكلي قبل اكتمال هذا المسار.
 
 ## Phase 7 — Georeferencing
 

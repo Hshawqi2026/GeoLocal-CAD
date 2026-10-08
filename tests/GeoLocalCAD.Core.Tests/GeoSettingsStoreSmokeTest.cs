@@ -22,6 +22,7 @@ namespace GeoLocalCAD.Core.Tests
             Console.WriteLine("GeoSettingsStore smoke test passed: " + store.SettingsPath);
             GeoPhase3SmokeTest.Run();
             GeoRasterSmokeTest.Run();
+            GeoDemSmokeTest.Run();
             return 0;
         }
 

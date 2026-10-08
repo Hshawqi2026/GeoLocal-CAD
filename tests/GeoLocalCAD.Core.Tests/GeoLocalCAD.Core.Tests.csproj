@@ -35,10 +35,15 @@
       <Project>{A1F3D0A1-6A19-4A72-9A0A-2AF8C4E3D5B7}</Project>
       <Name>GeoLocalCAD.Raster</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\GeoLocalCAD.DEM\GeoLocalCAD.DEM.csproj">
+      <Project>{C2D0B5A4-7F14-4B1C-8D21-4F0D9C6A7E33}</Project>
+      <Name>GeoLocalCAD.DEM</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoSettingsStoreSmokeTest.cs" />
     <Compile Include="GeoPhase3SmokeTest.cs" />
     <Compile Include="GeoRasterSmokeTest.cs" />
+    <Compile Include="GeoDemSmokeTest.cs" />
   </ItemGroup>
 </Project>

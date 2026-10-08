@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased] - Phase 6 planning bridge
+
+### Added
+- `GeoLocalCAD.DEM` contracts for geolocated elevation grids, NoData filtering, and Civil 3D surface requests.
+- Phase 6 plan for Raster-to-DEM-to-TIN Surface integration.
+
+### Not yet claimed complete
+- GDAL-backed elevation pixel sampling.
+- Civil 3D 2020 `TinSurface` adapter and `GEODEM` runtime command.
+
 ## [0.5.0] - 2026-10-08
 
 ### Added

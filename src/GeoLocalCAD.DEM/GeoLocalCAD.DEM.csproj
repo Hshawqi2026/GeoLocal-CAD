@@ -1,0 +1,12 @@
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup><ProjectGuid>{C2D0B5A4-7F14-4B1C-8D21-4F0D9C6A7E33}</ProjectGuid><OutputType>Library</OutputType><RootNamespace>GeoLocalCAD.DEM</RootNamespace><AssemblyName>GeoLocalCAD.DEM</AssemblyName><TargetFrameworkVersion>v4.8</TargetFrameworkVersion><LangVersion>latest</LangVersion></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'"><OutputPath>bin\Release\</OutputPath><Optimize>true</Optimize></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'"><OutputPath>bin\Debug\</OutputPath><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType></PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup><Reference Include="System" /><Reference Include="System.Core" /></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeoLocalCAD.CRS\GeoLocalCAD.CRS.csproj"><Project>{B5A9D98A-1D13-4F7D-BA3C-8B2F18B1D3C4}</Project><Name>GeoLocalCAD.CRS</Name></ProjectReference>
+    <ProjectReference Include="..\GeoLocalCAD.Raster\GeoLocalCAD.Raster.csproj"><Project>{A1F3D0A1-6A19-4A72-9A0A-2AF8C4E3D5B7}</Project><Name>GeoLocalCAD.Raster</Name></ProjectReference>
+  </ItemGroup>
+  <ItemGroup><Compile Include="GeoDemContracts.cs" /></ItemGroup>
+</Project>
