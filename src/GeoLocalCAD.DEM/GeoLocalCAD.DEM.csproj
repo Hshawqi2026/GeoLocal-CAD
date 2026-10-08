@@ -8,5 +8,5 @@
     <ProjectReference Include="..\GeoLocalCAD.CRS\GeoLocalCAD.CRS.csproj"><Project>{B5A9D98A-1D13-4F7D-BA3C-8B2F18B1D3C4}</Project><Name>GeoLocalCAD.CRS</Name></ProjectReference>
     <ProjectReference Include="..\GeoLocalCAD.Raster\GeoLocalCAD.Raster.csproj"><Project>{A1F3D0A1-6A19-4A72-9A0A-2AF8C4E3D5B7}</Project><Name>GeoLocalCAD.Raster</Name></ProjectReference>
   </ItemGroup>
-  <ItemGroup><Compile Include="GeoDemContracts.cs" /></ItemGroup>
+  <ItemGroup><Compile Include="GeoDemContracts.cs" /><Compile Include="GdalElevationSampler.cs" /></ItemGroup>
 </Project>

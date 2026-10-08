@@ -4,11 +4,13 @@
 
 ### Added
 - `GeoLocalCAD.DEM` contracts for geolocated elevation grids, NoData filtering, and Civil 3D surface requests.
+- GDAL-backed GeoTIFF elevation sampler using `gdal_translate`/`gdalinfo`.
+- Civil 3D `TinSurface` adapter and `GEODEM` command source for Civil 3D 2020.
 - Phase 6 plan for Raster-to-DEM-to-TIN Surface integration.
 
 ### Not yet claimed complete
-- GDAL-backed elevation pixel sampling.
-- Civil 3D 2020 `TinSurface` adapter and `GEODEM` runtime command.
+- Civil 3D 2020 runtime acceptance of the `TinSurface` adapter and `GEODEM` command.
+- CRS reprojection from DEM source CRS to drawing CRS inside `GEODEM`.
 
 ## [0.5.0] - 2026-10-08
 

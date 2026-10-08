@@ -16,6 +16,7 @@ cp src/GeoLocalCAD.UI/bin/Release/GeoLocalCAD.UI.dll artifacts/GeoLocalCAD_v0.5.
 cp src/GeoLocalCAD.CRS/bin/Release/GeoLocalCAD.CRS.dll artifacts/GeoLocalCAD_v0.5.0/
 cp src/GeoLocalCAD.Vector/bin/Release/GeoLocalCAD.Vector.dll artifacts/GeoLocalCAD_v0.5.0/
 cp src/GeoLocalCAD.Raster/bin/Release/GeoLocalCAD.Raster.dll artifacts/GeoLocalCAD_v0.5.0/
+cp src/GeoLocalCAD.DEM/bin/Release/GeoLocalCAD.DEM.dll artifacts/GeoLocalCAD_v0.5.0/
 cp README-INSTALL.md CHANGELOG.md LICENSE artifacts/GeoLocalCAD_v0.5.0/
 (cd artifacts && zip -r GeoLocalCAD_v0.5.0.zip GeoLocalCAD_v0.5.0 >/dev/null)
 echo "Release created: artifacts/GeoLocalCAD_v0.5.0.zip"

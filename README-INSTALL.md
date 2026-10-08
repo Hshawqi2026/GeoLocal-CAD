@@ -21,6 +21,14 @@
 11. Run `GEOEXPORT`, select supported Point/Polyline entities, provide an output path and explicit drawing EPSG.
 12. Run `GEOINFO`, select a DBPoint/Line/Polyline/Circle, and verify the WPF coordinate inspector opens.
 13. Run `GEOIMPORTRASTER`, provide a georeferenced GeoTIFF or PNG/JPEG/BMP plus World File, and verify the image is placed at its real extent.
+14. Configure GDAL executables before `GEODEM`:
+
+```powershell
+$env:GEOLOCAL_GDAL_TRANSLATE = "C:\GeoLocalCAD\GDAL\bin\gdal_translate.exe"
+$env:GEOLOCAL_GDALINFO = "C:\GeoLocalCAD\GDAL\bin\gdalinfo.exe"
+```
+
+15. Run `GEODEM`, provide a single-band georeferenced DEM GeoTIFF, a Civil 3D surface name, and a layer name. Verify that valid elevation samples create a TIN Surface in the real CRS location.
 
 ## Expected log
 
@@ -44,10 +52,13 @@ The plugin writes to `%LOCALAPPDATA%\\GeoLocalCAD\\Logs\\GeoLocalCAD.log` and re
 - [ ] `GEOINFO` Copy coordinates places the displayed values on the clipboard.
 - [ ] `GEOIMPORTRASTER` reads raster dimensions and extent and creates a RasterImage at the georeferenced location.
 - [ ] An unreferenced raster is rejected and is not placed at `(0,0)`.
+- [ ] `GEODEM` reads a single-band DEM with GDAL and creates a Civil 3D TIN Surface from valid samples.
+- [ ] `GEODEM` excludes NoData and rejects missing CRS/geotransform before creating a Surface.
 
 ## Troubleshooting
 
 - **AutoCAD managed API not found during build:** set `AutodeskManagedApiPath` to the installed AutoCAD/Civil 3D 2020 folder.
+- **Civil 3D API not found during build:** set `Civil3DManagedApiPath` to the licensed Civil 3D 2020 installation folder containing `AeccDbMgd.dll`; this assembly is never copied into the release.
 - **NETLOAD cannot load the DLL:** verify the DLL was built for .NET Framework 4.8 and that it is not blocked by Windows file security.
 - **GEOLOCAL is unknown:** unload/reload the exact `GeoLocalCAD.dll` from the release folder and inspect the log.
 - **Runtime exception:** collect the command-line text and the log file; do not claim Phase 5 passed until the evidence is reviewed.

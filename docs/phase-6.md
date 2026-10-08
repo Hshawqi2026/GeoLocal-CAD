@@ -18,7 +18,7 @@ Raster/GeoTIFF
 
 يحتوي `GeoLocalCAD.DEM` على عقود مستقلة عن Autodesk. `DemGrid` يحتفظ بمصفوفة الارتفاعات، GeoTransform، CRS، وNoData. يعيد `EnumerateValidSamples()` مراكز pixels فقط عندما تكون قيمة الارتفاع رقمية وليست NoData، ويضعها في world coordinates من خلال GeoTransform. لا يسمح النموذج بإنشاء Grid بلا CRS أو georeferencing.
 
-`Civil3DSurfaceRequest` يحمل اسم Surface وLayer وquality tolerance. أما `IDemSurfaceBuilder` فهو contract للطبقة الخاصة بـ Civil 3D؛ التطبيق الفعلي سيستخدم Civil 3D 2020 API لإنشاء TinSurface وإضافة elevation points داخل Transaction آمنة.
+`Civil3DSurfaceRequest` يحمل اسم Surface وLayer وquality tolerance. أما `IDemSurfaceBuilder` فهو contract للطبقة الخاصة بـ Civil 3D؛ التنفيذ الحالي يستخدم Civil 3D 2020 API لإنشاء TinSurface وإضافة elevation points داخل Transaction آمنة، لكنه لم يُبنَ أو يُختبر بعد داخل Civil 3D في هذه البيئة.
 
 ## علاقة Phase 5
 
@@ -34,9 +34,17 @@ Raster/GeoTIFF
 | 6.3 | ربط Vector boundaries وLayer policy | Surface boundary وLayer حتميان |
 | 6.4 | تقارير وRollback وPerformance | فشل آمن، log، وعدم ترك Surface جزئي |
 
+## التنفيذ الحالي
+
+تم تنفيذ `GdalElevationSampler` باستخدام `gdal_translate -of XYZ` لقراءة band الارتفاع الأولى، و`gdalinfo -json` لقراءة NoData. يتحقق sampler من geotransform وCRS، يرفض اختلاف عدد العينات عن أبعاد Raster، ويعيد `DemGrid` يحفظ قيم NoData ويحوّل pixel centers إلى world coordinates. مسارات الأدوات قابلة للضبط عبر `GEOLOCAL_GDAL_TRANSLATE` و`GEOLOCAL_GDALINFO`.
+
+تم تنفيذ `Civil3DTinSurfaceBuilder` داخل Autodesk adapter. يستخدم `TinSurface.Create(Database, name)` ثم `TinSurface.AddVertices(Point3dCollection)` داخل Transaction، وينشئ Layer محددًا عند غيابه. أضيف الأمر الحقيقي `GEODEM` لربط sampler بالـ adapter، مع فشل واضح وسجل تفصيلي عند غياب GDAL أو CRS أو valid samples.
+
+اختبار Linux يثبت GDAL sampler على GeoTIFF أنشئ بقيم ارتفاع حقيقية، بما في ذلك NoData وpixel geolocation. لم يتم الادعاء بعد باجتياز Civil 3D لأن AeccDbMgd.dll غير موجودة في Sandbox.
+
 ## الأوامر
 
-الأمر النهائي سيكون `GEODEM` بعد اكتمال sampler والـ Civil 3D adapter. في Increment 6.0 لا يُنشأ أمر شكلي؛ العقود والاختبارات فقط. بعد 6.2 يطلب `GEODEM` مصدر Raster، CRS الرسم، اسم Surface، Layer، NoData policy، وsampling/decimation options، ثم يعرض preview للعدد المتوقع قبل الإنشاء.
+الأمر `GEODEM` يطلب مصدر Raster، اسم Surface، وLayer. في الإصدار الحالي يعتمد على CRS الموجود في DEM ويقرأ band الأولى. ستضاف في increment التالي CRS الرسم، reprojection، preview، decimation، وNoData policy التفاعلية قبل إنشاء Surface.
 
 ## قواعد CRS والوحدات
 
@@ -57,4 +65,4 @@ Source CRS من GeoTIFF أو من المستخدم بوضوح، وDrawing CRS م
 
 ## الحالة الحالية
 
-تم تنفيذ عقود `GeoLocalCAD.DEM` واختبارها مستقلًا. لم يُدّعَ بعد تنفيذ GDAL pixel sampler أو Civil 3D TinSurface adapter، لأن ذلك يتطلب binding/Native dependencies واختبارًا على Windows Civil 3D 2020. هذه العناصر هي increments التالية في Phase 6، بينما Phase 8 سيضيف contours والتحليل terrain المتقدم.
+تم تنفيذ عقود `GeoLocalCAD.DEM` وGDAL pixel sampler واختبارها مستقلًا على GeoTIFF DEM حقيقي. كما أضيف مصدر Civil 3D TinSurface adapter وأمر `GEODEM`. لم يُدّعَ بعد اجتياز Build/NETLOAD داخل Civil 3D لأن `AeccDbMgd.dll` غير موجودة في Sandbox؛ هذه هي بوابة قبول 6.2 التالية، بينما Phase 8 سيضيف contours والتحليل terrain المتقدم.

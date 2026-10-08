@@ -12,6 +12,7 @@ Copy-Item "$PSScriptRoot\..\src\GeoLocalCAD.UI\bin\$Configuration\GeoLocalCAD.UI
 Copy-Item "$PSScriptRoot\..\src\GeoLocalCAD.CRS\bin\$Configuration\GeoLocalCAD.CRS.dll" $release
 Copy-Item "$PSScriptRoot\..\src\GeoLocalCAD.Vector\bin\$Configuration\GeoLocalCAD.Vector.dll" $release
 Copy-Item "$PSScriptRoot\..\src\GeoLocalCAD.Raster\bin\$Configuration\GeoLocalCAD.Raster.dll" $release
+Copy-Item "$PSScriptRoot\..\src\GeoLocalCAD.DEM\bin\$Configuration\GeoLocalCAD.DEM.dll" $release
 Copy-Item "$PSScriptRoot\..\README-INSTALL.md", "$PSScriptRoot\..\CHANGELOG.md", "$PSScriptRoot\..\LICENSE" $release
 Compress-Archive -Path "$release\*" -DestinationPath "$PSScriptRoot\..\artifacts\GeoLocalCAD_v0.5.0.zip" -Force
 Write-Host "Release created: artifacts\GeoLocalCAD_v0.5.0.zip"

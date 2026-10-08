@@ -18,6 +18,15 @@ namespace GeoLocalCAD.Core.Tests
             if (Math.Abs(samples[0].Location.X - 102.5) > 1e-9 || Math.Abs(samples[0].Location.Y - 197.5) > 1e-9) throw new InvalidOperationException("DEM sample geolocation failed.");
             var request = new Civil3DSurfaceRequest("DEM_Test", "GEO_DEM", 0.01);
             if (request.SurfaceName != "DEM_Test" || request.LayerName != "GEO_DEM") throw new InvalidOperationException("Civil 3D surface request failed.");
+            var gdalFixture = Environment.GetEnvironmentVariable("GEOLOCAL_TEST_DEM");
+            if (!string.IsNullOrWhiteSpace(gdalFixture))
+            {
+                var sampled = new GdalElevationSampler().Read(gdalFixture);
+                var sampledValues = sampled.EnumerateValidSamples().ToArray();
+                if (sampledValues.Length != 5 || Math.Abs(sampledValues[0].Elevation - 10) > 1e-9) throw new InvalidOperationException("GDAL DEM sampler values/NoData failed.");
+                if (Math.Abs(sampledValues[0].Location.X - 101) > 1e-9 || Math.Abs(sampledValues[0].Location.Y - 199) > 1e-9) throw new InvalidOperationException("GDAL DEM sampler geolocation failed.");
+                Console.WriteLine("GDAL elevation sampler GeoTIFF test passed.");
+            }
             Console.WriteLine("Phase 6 Raster-to-DEM contract smoke test passed.");
         }
     }

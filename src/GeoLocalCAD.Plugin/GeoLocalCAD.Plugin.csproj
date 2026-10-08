@@ -43,6 +43,10 @@
       <HintPath>$(AutodeskManagedApiPath)\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="AeccDbMgd">
+      <HintPath>$(Civil3DManagedApiPath)\AeccDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
@@ -64,6 +68,10 @@
       <Project>{A1F3D0A1-6A19-4A72-9A0A-2AF8C4E3D5B7}</Project>
       <Name>GeoLocalCAD.Raster</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeoLocalCAD.DEM\GeoLocalCAD.DEM.csproj">
+      <Project>{C2D0B5A4-7F14-4B1C-8D21-4F0D9C6A7E33}</Project>
+      <Name>GeoLocalCAD.DEM</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PluginEntryPoint.cs" />
@@ -74,11 +82,14 @@
     <Compile Include="Commands\GeoExportCommand.cs" />
     <Compile Include="Commands\GeoInfoCommand.cs" />
     <Compile Include="Commands\GeoImportRasterCommand.cs" />
+    <Compile Include="Commands\GeoDemCommand.cs" />
+    <Compile Include="Civil3D\Civil3DTinSurfaceBuilder.cs" />
   </ItemGroup>
   <Target Name="ValidateAutodeskReferences" BeforeTargets="ResolveAssemblyReferences">
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcCoreMgd.dll')" Text="AutoCAD 2020 managed API not found. Set AutodeskManagedApiPath to the licensed AutoCAD/Civil 3D 2020 installation directory." />
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcDbMgd.dll')" Text="AutoCAD 2020 managed API not found: AcDbMgd.dll." />
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AcMgd.dll')" Text="AutoCAD 2020 managed API not found: AcMgd.dll." />
     <Error Condition="!Exists('$(AutodeskManagedApiPath)\AdWindows.dll')" Text="AutoCAD 2020 Ribbon API not found: AdWindows.dll." />
+    <Error Condition="!Exists('$(Civil3DManagedApiPath)\AeccDbMgd.dll')" Text="Civil 3D 2020 managed API not found: AeccDbMgd.dll. Set Civil3DManagedApiPath to the licensed Civil 3D installation directory." />
   </Target>
 </Project>
