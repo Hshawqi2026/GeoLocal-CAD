@@ -42,6 +42,8 @@ Phase 2 validation steps are in [docs/phase-2.md](docs/phase-2.md), Phase 3 step
 
 The proposed Phase 4 plan is in [docs/phase-4-plan.md](docs/phase-4-plan.md). Windows build and Civil 3D validation steps are in [docs/windows-test-guide.md](docs/windows-test-guide.md).
 
+The complete production roadmap for `v1.0.0` is in [docs/final-production-roadmap.md](docs/final-production-roadmap.md). It covers Raster, Vector, Georeferencing, DEM, Civil 3D integration, Offline Maps, testing, and production release gates.
+
 ## License and third-party policy
 
 The project is MIT-licensed. Autodesk assemblies are proprietary and must be supplied by the installed licensed product; they are not redistributed. Future PROJ/GDAL/GEOS/SQLite dependencies will be documented with their upstream licenses before inclusion.
