@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0" AutodeskProduct="AutoCAD" Name="GeoLocal CAD" AppVersion="0.6.0" ProductType="Application" Description="Offline CRS, Raster, DEM and Civil 3D surface tools" Author="GeoLocal CAD" FriendlyVersion="0.6.0">
+  <CompanyDetails Name="GeoLocal CAD" />
+  <Components Description="Civil 3D 2020 managed plugin">
+    <RuntimeRequirements OS="Win64" Platform="Civil3D" SeriesMin="R24.0" SeriesMax="R24.0" />
+    <ComponentEntry AppName="GeoLocalCAD" ModuleName="GeoLocalCAD.dll" AppDescription="GeoLocal CAD Civil 3D plugin" LoadReasons="LoadOnAutoCADStartup" AppType="Managed" />
+  </Components>
+</ApplicationPackage>

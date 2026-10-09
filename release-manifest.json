@@ -1,0 +1,13 @@
+{
+  "product": "GeoLocal CAD",
+  "version": "0.6.0-source-validation",
+  "target": "Autodesk Civil 3D 2020 / AutoCAD 2020 / .NET Framework 4.8",
+  "commands": ["GEOLOCAL", "GEOSETTINGS", "GEOCRS", "GEOINFO", "GEOIMPORT", "GEOEXPORT", "GEOIMPORTRASTER", "GEODEM"],
+  "managedAssemblies": ["GeoLocalCAD.dll", "GeoLocalCAD.Core.dll", "GeoLocalCAD.UI.dll", "GeoLocalCAD.CRS.dll", "GeoLocalCAD.Vector.dll", "GeoLocalCAD.Raster.dll", "GeoLocalCAD.DEM.dll"],
+  "nativeDependencies": ["GDAL/bin/gdal_translate.exe", "GDAL/bin/gdalinfo.exe"],
+  "autodeskDependencies": ["AcMgd.dll", "AcDbMgd.dll", "AcCoreMgd.dll", "AdWindows.dll", "AeccDbMgd.dll"],
+  "autodeskDependenciesIncluded": false,
+  "cuixIncluded": false,
+  "offlineOnly": true,
+  "validation": "Core, CRS, Raster and GDAL DEM sampler validated in Sandbox; Civil 3D NETLOAD/TinSurface requires Windows Civil 3D 2020 evidence."
+}
