@@ -48,7 +48,7 @@ The proposed Phase 4 plan is in [docs/phase-4-plan.md](docs/phase-4-plan.md). Wi
 
 The complete production roadmap for `v1.0.0` is in [docs/final-production-roadmap.md](docs/final-production-roadmap.md). It covers Raster, Vector, Georeferencing, DEM, Civil 3D integration, Offline Maps, testing, and production release gates.
 
-Windows release preparation is documented in [docs/release-status.md](docs/release-status.md). The package installer is [install.ps1](install.ps1), and the Windows build/package entry point is [scripts/build-release-package.ps1](scripts/build-release-package.ps1).
+Windows release preparation is documented in [docs/release-status.md](docs/release-status.md). The one-command pipeline is [build-final-windows.ps1](build-final-windows.ps1); the package installer is [install.ps1](install.ps1), and the lower-level Windows build/package entry point is [scripts/build-release-package.ps1](scripts/build-release-package.ps1).
 
 ## License and third-party policy
 

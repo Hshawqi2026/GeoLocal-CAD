@@ -19,3 +19,18 @@ This is **not yet `v1.0.0`**. It is a release-preparation/source-validation stat
 7. The saved DWG is reopened and the surface/metadata remain valid.
 
 The installer intentionally fails or warns instead of pretending that missing Windows/Civil 3D artifacts are present.
+
+## One-command Windows pipeline
+
+On a Windows machine with Visual Studio Build Tools, Civil 3D 2020, and GDAL Windows installed, run from the repository root:
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\build-final-windows.ps1 `
+  -AutodeskManagedApiPath "C:\Program Files\Autodesk\AutoCAD 2020" `
+  -Civil3DManagedApiPath "C:\Program Files\Autodesk\AutoCAD 2020" `
+  -GdalRoot "C:\GeoLocalCAD\GDAL" `
+  -InstallBundle
+```
+
+The script checks the Autodesk managed APIs and GDAL, rebuilds the solution, runs Core/DEM tests, creates and inspects the ZIP, rejects Autodesk DLLs in the package, and optionally installs the ApplicationPlugins bundle. It deliberately stops before claiming `v1.0.0` until Civil 3D interactive acceptance (NETLOAD or auto-load, GEODEM, save/reopen DWG) is completed.
