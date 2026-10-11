@@ -4,6 +4,7 @@
   "target": "Autodesk Civil 3D 2020 / AutoCAD 2020 / .NET Framework 4.8",
   "commands": ["GEOLOCAL", "GEOSETTINGS", "GEOCRS", "GEOINFO", "GEOIMPORT", "GEOEXPORT", "GEOIMPORTRASTER", "GEODEM"],
   "managedAssemblies": ["GeoLocalCAD.dll", "GeoLocalCAD.Core.dll", "GeoLocalCAD.UI.dll", "GeoLocalCAD.CRS.dll", "GeoLocalCAD.Vector.dll", "GeoLocalCAD.Raster.dll", "GeoLocalCAD.DEM.dll"],
+  "testRunner": "GeoLocalCAD.TestRunner.exe",
   "nativeDependencies": ["GDAL/bin/gdal_translate.exe", "GDAL/bin/gdalinfo.exe"],
   "autodeskDependencies": ["AcMgd.dll", "AcDbMgd.dll", "AcCoreMgd.dll", "AdWindows.dll", "AeccDbMgd.dll"],
   "autodeskDependenciesIncluded": false,

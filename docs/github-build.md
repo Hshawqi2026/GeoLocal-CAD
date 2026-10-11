@@ -60,6 +60,22 @@ self-hosted, Windows, x64, civil3d-2020
 5. التحقق من عدم وجود Autodesk DLLs في ZIP.
 6. رفع ZIP كـ Artifact إلى صفحة تشغيل Workflow.
 
+## TestRunner.exe
+
+يُبنى `GeoLocalCAD.TestRunner.exe` ضمن Solution، ويُرفع في Artifact مستقل، كما يضاف إلى ZIP Windows. لتشغيل فحص العقود خارج Civil 3D:
+
+```powershell
+.\GeoLocalCAD.TestRunner.exe --report .\testrunner-report.txt
+```
+
+ولفحص GeoTIFF DEM فعلي مع GDAL:
+
+```powershell
+.\GeoLocalCAD.TestRunner.exe --dem "C:\Data\sample-dem.tif" --report .\dem-report.txt
+```
+
+البرنامج يختبر Core/DEM/GDAL فقط؛ سطر `Civil 3D TinSurface: NOT TESTED` متوقع خارج Civil 3D ولا يعني فشل البناء.
+
 ## حدود الأتمتة
 
 Workflow لا يشغّل Civil 3D بواجهة تفاعلية ولا ينفذ `NETLOAD` أو يحفظ DWG تلقائيًا. بعد رفع Artifact يجب اختبار `GEODEM` داخل Civil 3D يدويًا، ثم اعتماد الإصدار النهائي فقط بعد نجاح إنشاء TinSurface وإعادة فتح DWG.

@@ -25,9 +25,21 @@ jobs:
           xbuild src/GeoLocalCAD.CRS/GeoLocalCAD.CRS.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
           xbuild src/GeoLocalCAD.Raster/GeoLocalCAD.Raster.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
           xbuild src/GeoLocalCAD.DEM/GeoLocalCAD.DEM.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
+          xbuild tools/GeoLocalCAD.TestRunner/GeoLocalCAD.TestRunner.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
           xbuild tests/GeoLocalCAD.Core.Tests/GeoLocalCAD.Core.Tests.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
       - name: Run smoke tests
         run: mono tests/GeoLocalCAD.Core.Tests/bin/Release/GeoLocalCAD.Core.Tests.exe
+      - name: Run standalone TestRunner
+        run: mono tools/GeoLocalCAD.TestRunner/bin/Release/GeoLocalCAD.TestRunner.exe --report artifacts/testrunner-report.txt
+      - name: Upload standalone TestRunner
+        uses: actions/upload-artifact@v4
+        with:
+          name: GeoLocalCAD-TestRunner-ubuntu-${{ github.run_number }}
+          path: |
+            tools/GeoLocalCAD.TestRunner/bin/Release/GeoLocalCAD.TestRunner.exe
+            tools/GeoLocalCAD.TestRunner/bin/Release/*.dll
+            artifacts/testrunner-report.txt
+          if-no-files-found: error
 
   civil3d-windows:
     name: Civil 3D 2020 Windows build
@@ -58,4 +70,13 @@ jobs:
         with:
           name: GeoLocalCAD-civil3d-candidate-${{ github.run_number }}
           path: artifacts/GeoLocalCAD_v0.6.0-civil3d-candidate-${{ github.run_number }}.zip
+          if-no-files-found: error
+      - name: Upload DLL and TestRunner outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: GeoLocalCAD-DLL-and-TestRunner-windows-${{ github.run_number }}
+          path: |
+            src/GeoLocalCAD.Plugin/bin/Release/GeoLocalCAD.dll
+            tools/GeoLocalCAD.TestRunner/bin/Release/GeoLocalCAD.TestRunner.exe
+            tools/GeoLocalCAD.TestRunner/bin/Release/*.dll
           if-no-files-found: error

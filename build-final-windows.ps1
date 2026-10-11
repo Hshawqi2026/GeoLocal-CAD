@@ -59,7 +59,7 @@ Need $zip 'final release ZIP'
 $extract = Join-Path $root "artifacts\install-test-$Version"
 if (Test-Path $extract) { Remove-Item $extract -Recurse -Force }
 Expand-Archive $zip $extract -Force
-foreach ($name in @('GeoLocalCAD.dll','GeoLocalCAD.Core.dll','GeoLocalCAD.UI.dll','GeoLocalCAD.CRS.dll','GeoLocalCAD.Vector.dll','GeoLocalCAD.Raster.dll','GeoLocalCAD.DEM.dll','install.ps1','PackageContents.xml')) { Need (Join-Path $extract $name) "release component $name" }
+foreach ($name in @('GeoLocalCAD.dll','GeoLocalCAD.Core.dll','GeoLocalCAD.UI.dll','GeoLocalCAD.CRS.dll','GeoLocalCAD.Vector.dll','GeoLocalCAD.Raster.dll','GeoLocalCAD.DEM.dll','GeoLocalCAD.TestRunner.exe','install.ps1','PackageContents.xml')) { Need (Join-Path $extract $name) "release component $name" }
 $forbidden = @('AcMgd.dll','AcDbMgd.dll','AcCoreMgd.dll','AdWindows.dll','AeccDbMgd.dll')
 foreach ($name in $forbidden) { if (Get-ChildItem $extract -Recurse -Filter $name -ErrorAction SilentlyContinue) { throw "Forbidden Autodesk binary included in release: $name" } }
 Say "Package validation passed: $zip"

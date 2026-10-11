@@ -20,6 +20,8 @@ This is **not yet `v1.0.0`**. It is a release-preparation/source-validation stat
 
 The installer intentionally fails or warns instead of pretending that missing Windows/Civil 3D artifacts are present.
 
+The release pipeline also produces `GeoLocalCAD.TestRunner.exe`. It is a standalone contract/DEM/GDAL checker and explicitly reports Civil 3D TinSurface as not tested when run outside Civil 3D.
+
 ## One-command Windows pipeline
 
 On a Windows machine with Visual Studio Build Tools, Civil 3D 2020, and GDAL Windows installed, run from the repository root:

@@ -23,6 +23,13 @@ for ($i=0; $i -lt $assemblies.Count; $i++) {
     if (-not (Test-Path $source)) { throw "Missing build output: $source" }
     Copy-Item $source $release -Force
 }
+$testRunner = Join-Path $root "tools\GeoLocalCAD.TestRunner\bin\$Configuration\GeoLocalCAD.TestRunner.exe"
+if (-not (Test-Path $testRunner)) { throw "Missing TestRunner output: $testRunner" }
+Copy-Item $testRunner $release -Force
+foreach ($dependency in @('GeoLocalCAD.DEM.dll','GeoLocalCAD.Raster.dll','GeoLocalCAD.CRS.dll','GeoLocalCAD.Core.dll')) {
+    $dependencyPath = Join-Path $root "tools\GeoLocalCAD.TestRunner\bin\$Configuration\$dependency"
+    if (Test-Path $dependencyPath) { Copy-Item $dependencyPath $release -Force }
+}
 Copy-Item (Join-Path $root 'install.ps1'),(Join-Path $root 'PackageContents.xml'),(Join-Path $root 'release-manifest.json'),(Join-Path $root 'README-INSTALL.md'),(Join-Path $root 'CHANGELOG.md'),(Join-Path $root 'LICENSE') $release -Force
 New-Item -ItemType Directory -Force (Join-Path $release 'GDAL') | Out-Null
 Copy-Item (Join-Path $root 'GDAL\README-Windows.md') (Join-Path $release 'GDAL') -Force

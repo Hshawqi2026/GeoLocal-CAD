@@ -52,6 +52,8 @@ Windows release preparation is documented in [docs/release-status.md](docs/relea
 
 GitHub Actions automation is documented in [docs/github-build.md](docs/github-build.md). Hosted CI validates independent modules; a Civil 3D final build requires a Windows self-hosted runner with the licensed Civil 3D installation kept local.
 
+The standalone [GeoLocalCAD.TestRunner.exe](tools/GeoLocalCAD.TestRunner) is built and uploaded by CI alongside the Civil 3D DLL candidate. It validates DEM/CRS/GDAL contracts outside Civil 3D; it does not replace the Civil 3D runtime test for `TinSurface`.
+
 ## License and third-party policy
 
 The project is MIT-licensed. Autodesk assemblies are proprietary and must be supplied by the installed licensed product; they are not redistributed. Future PROJ/GDAL/GEOS/SQLite dependencies will be documented with their upstream licenses before inclusion.
