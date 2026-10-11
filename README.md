@@ -54,6 +54,8 @@ GitHub Actions automation is documented in [docs/github-build.md](docs/github-bu
 
 The standalone [GeoLocalCAD.TestRunner.exe](tools/GeoLocalCAD.TestRunner) is built and uploaded by CI alongside the Civil 3D DLL candidate. It validates DEM/CRS/GDAL contracts outside Civil 3D; it does not replace the Civil 3D runtime test for `TinSurface`.
 
+The Windows single-file installer pattern is documented in [docs/easycommand-style-installer.md](docs/easycommand-style-installer.md) and built by [scripts/build-installer-exe.ps1](scripts/build-installer-exe.ps1). It embeds the GeoLocalCAD ApplicationPlugins bundle and does not redistribute Autodesk DLLs.
+
 ## License and third-party policy
 
 The project is MIT-licensed. Autodesk assemblies are proprietary and must be supplied by the installed licensed product; they are not redistributed. Future PROJ/GDAL/GEOS/SQLite dependencies will be documented with their upstream licenses before inclusion.

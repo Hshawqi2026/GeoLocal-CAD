@@ -80,3 +80,17 @@ jobs:
             tools/GeoLocalCAD.TestRunner/bin/Release/GeoLocalCAD.TestRunner.exe
             tools/GeoLocalCAD.TestRunner/bin/Release/*.dll
           if-no-files-found: error
+      - name: Build single-file Windows installer
+        shell: powershell
+        run: |
+          .\scripts\build-installer-exe.ps1 `
+            -AutodeskManagedApiPath $env:GEOLOCAL_AUTODESK_PATH `
+            -Civil3DManagedApiPath $env:GEOLOCAL_CIVIL3D_PATH `
+            -GdalRoot $env:GEOLOCAL_GDAL_ROOT `
+            -Version "0.6.0-civil3d-candidate-${{ github.run_number }}"
+      - name: Upload single-file installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: GeoLocalCAD-Installer-${{ github.run_number }}
+          path: artifacts/GeoLocalCAD-Installer-v0.6.0-civil3d-candidate-${{ github.run_number }}.exe
+          if-no-files-found: error
