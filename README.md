@@ -50,6 +50,8 @@ The complete production roadmap for `v1.0.0` is in [docs/final-production-roadma
 
 Windows release preparation is documented in [docs/release-status.md](docs/release-status.md). The one-command pipeline is [build-final-windows.ps1](build-final-windows.ps1); the package installer is [install.ps1](install.ps1), and the lower-level Windows build/package entry point is [scripts/build-release-package.ps1](scripts/build-release-package.ps1).
 
+GitHub Actions automation is documented in [docs/github-build.md](docs/github-build.md). Hosted CI validates independent modules; a Civil 3D final build requires a Windows self-hosted runner with the licensed Civil 3D installation kept local.
+
 ## License and third-party policy
 
 The project is MIT-licensed. Autodesk assemblies are proprietary and must be supplied by the installed licensed product; they are not redistributed. Future PROJ/GDAL/GEOS/SQLite dependencies will be documented with their upstream licenses before inclusion.

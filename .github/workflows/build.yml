@@ -1,0 +1,61 @@
+name: GeoLocal CAD build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core-validation:
+    name: Core / CRS / Raster / DEM validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install validation tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq mono-devel gdal-bin python3-gdal
+      - name: Build core libraries and tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          xbuild src/GeoLocalCAD.Core/GeoLocalCAD.Core.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
+          xbuild src/GeoLocalCAD.CRS/GeoLocalCAD.CRS.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
+          xbuild src/GeoLocalCAD.Raster/GeoLocalCAD.Raster.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
+          xbuild src/GeoLocalCAD.DEM/GeoLocalCAD.DEM.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
+          xbuild tests/GeoLocalCAD.Core.Tests/GeoLocalCAD.Core.Tests.csproj /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
+      - name: Run smoke tests
+        run: mono tests/GeoLocalCAD.Core.Tests/bin/Release/GeoLocalCAD.Core.Tests.exe
+
+  civil3d-windows:
+    name: Civil 3D 2020 Windows build
+    if: github.event_name != 'pull_request'
+    runs-on: [self-hosted, Windows, x64, civil3d-2020]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate machine configuration
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if (-not $env:GEOLOCAL_AUTODESK_PATH) { throw 'Set GEOLOCAL_AUTODESK_PATH on the self-hosted runner.' }
+          if (-not $env:GEOLOCAL_CIVIL3D_PATH) { throw 'Set GEOLOCAL_CIVIL3D_PATH on the self-hosted runner.' }
+          if (-not $env:GEOLOCAL_GDAL_ROOT) { throw 'Set GEOLOCAL_GDAL_ROOT on the self-hosted runner.' }
+          foreach ($p in @('AcMgd.dll','AcDbMgd.dll','AcCoreMgd.dll','AdWindows.dll')) { if (-not (Test-Path (Join-Path $env:GEOLOCAL_AUTODESK_PATH $p))) { throw "Missing $p" } }
+          if (-not (Test-Path (Join-Path $env:GEOLOCAL_CIVIL3D_PATH 'AeccDbMgd.dll'))) { throw 'Missing AeccDbMgd.dll' }
+          if (-not (Test-Path (Join-Path $env:GEOLOCAL_GDAL_ROOT 'bin\gdal_translate.exe'))) { throw 'Missing GDAL gdal_translate.exe' }
+      - name: Build, test and package
+        shell: powershell
+        run: |
+          .\build-final-windows.ps1 `
+            -AutodeskManagedApiPath $env:GEOLOCAL_AUTODESK_PATH `
+            -Civil3DManagedApiPath $env:GEOLOCAL_CIVIL3D_PATH `
+            -GdalRoot $env:GEOLOCAL_GDAL_ROOT `
+            -Version "0.6.0-civil3d-candidate-${{ github.run_number }}"
+      - name: Upload candidate package
+        uses: actions/upload-artifact@v4
+        with:
+          name: GeoLocalCAD-civil3d-candidate-${{ github.run_number }}
+          path: artifacts/GeoLocalCAD_v0.6.0-civil3d-candidate-${{ github.run_number }}.zip
+          if-no-files-found: error
